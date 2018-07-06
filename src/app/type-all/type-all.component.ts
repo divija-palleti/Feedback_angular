@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import {ApiServicesService } from '../api-services.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-type-all',
@@ -9,12 +11,25 @@ export class TypeAllComponent implements OnInit {
 
 
   closeResult: string;
-  constructor(private modalService: NgbModal) { }
+
+  public allInfo = [];
+  constructor(private modalService: NgbModal,private allinfo : ApiServicesService) { }
 
   ngOnInit() {
+
+    //this.content = content;
+
+    this.allinfo.getInfo().subscribe(data => 
+      {this.allInfo = data;
+       console.log(this.allInfo);
+      });
     
   }
  
+  fulldetails()
+  {
+    
+  }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -35,26 +50,26 @@ export class TypeAllComponent implements OnInit {
   }
   
     columnDefs = [
-		{headerName:'Reference Number', field: 'referencenumber',cellRenderer: function(params) {
-      return '<a href="/feedbackList/all" ng-click="open(content)"  >'+ params.value+'</a>'
+		{headerName:'Reference Number', field: 'ref_id',cellRenderer: function(params) {
+      return '<a  href ="javascript:void(0);" onclick="open(content);"  >'+ params.value+'</a>'
   }},
 		{headerName: 'First Name', field: 'firstname' },
-    {headerName: 'Second Name', field: 'secondname'},
+    {headerName: 'Last Name', field: 'lastname'},
     {headerName:'Feedback Type', field: 'feedbacktype' },
 		{headerName: 'Subject', field: 'subject' },
    
-    {headerName:'Date', field: 'date' },
-		{headerName: 'Feedback Status', field: 'status' },
+    {headerName:'Date and Time', field: 'dt' },
+		{headerName: 'Feedback Status', field: 'feedbackstatus' },
 		
 	];
-
+/*
 	  rowData = [
     { referencenumber: '5879898' ,firstname : 'Divija',secondname : 'Palleti', feedbacktype: 'Bug Report',subject: 'Subject',date :'7-8-2018',status :'open'},
 		{ make: 'Toyota', model: 'Celica', price: 35000 },
 		{ make: 'Ford', model: 'Mondeo', price: 32000 },
 		{ make: 'Porsche', model: 'Boxter', price: 72000 }
   ];
-  
+  */
   
   
   

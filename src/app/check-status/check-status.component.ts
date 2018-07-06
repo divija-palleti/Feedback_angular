@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router , ActivatedRoute, ParamMap} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import { userInfo } from '../userInformation';
+
 import { Observable } from 'rxjs';
 
 

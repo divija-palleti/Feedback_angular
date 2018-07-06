@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 //import { CheckStatusComponent} from '../check-status'
 import {ApiServicesService } from '../api-services.service';
-import { userInfo } from '../userInformation';
+//import { userInfo } from '../userInformation';
 //import { AppRoutingModule,routingComponents } from '..//app-routing.module';
 @Component({
   selector: 'app-display-info',
