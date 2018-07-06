@@ -1,0 +1,19 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header text-primary">
+    <h4 class="modal-title text-align: center" >Thank You</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-secondary">
+    <p>Thank You for your valuable time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : 486797989</span> </p>
+  </div>
+  
+  <div class="modal-footer">
+     
+      <button type="button" class="btn btn-primary" routerLink ="/checkStatus" routerLinkActive="active1" (click)="c('Close click')">Check Status</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openWindow(content)">Submit</button>

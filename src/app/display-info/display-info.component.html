@@ -1,0 +1,110 @@
+
+
+
+<!--
+
+<ag-grid-angular 
+style="width: 100%; height: 500px;" 
+class="ag-theme-balham"
+[rowData]="rowData" 
+[columnDefs]="columnDefs">
+</ag-grid-angular>
+
+
+-->
+<table class="table table-striped  table-bordered">
+    
+    <tbody>
+      <tr *ngFor = "let info of userInfo">
+        <th scope="row">{{ info. Book_ID}}</th>
+        <td colspan="3">{{ info. Book_Name}}</td>
+       <!-- <td>{{ info. Category}}</td>
+        <td>{{ info. Price}}</td> -->
+      </tr>
+    </tbody>
+     
+  </table>
+
+<table align = "center">
+    <tfoot>
+        <tr>
+          <td colspan="4">
+          
+            <button type="button" class="btn btn-dark" (click)="done()"  routerLink ="">Done</button>
+           </td>
+          </tr>
+      </tfoot>
+
+</table>
+
+
+
+<!--
+<form>
+    
+  <div class="form-group">
+    
+   
+    <input type="text" class="form-control" id="referencenumber" placeholder="Reference Number">
+   
+  </div>
+  
+  <button type="submit" class="btn btn-primary" routerLink ="/displayInfo">Go!</button>
+</form>
+
+
+
+
+<div class="container-full">
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="grid"></table>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
+      <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9">
+        Level 1: .col-sm-9
+        <div class="row">
+          <div class="col-8 col-sm-6">
+            Level 2: .col-8 .col-sm-6
+          </div>
+          <div class="col-4 col-sm-6">
+            Level 2: .col-4 .col-sm-6
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  
+    <span class="border">
+        <div class="row">
+            <div class="col-sm-8">col-sm-8</div>
+          
+         <div class="col-sm-4">col-sm-4</div>
+         
+        </div>
+    </span>  
+
+
+<div class="row">
+  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+</div>
+</div> -->

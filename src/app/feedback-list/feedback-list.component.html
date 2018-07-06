@@ -1,0 +1,22 @@
+
+
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary btn-secondary btn-lg btn-block" id="dropdownBasic1" ngbDropdownToggle>Please Select The Category of FeedBack You Want To View</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item" (click)="loadComments()">Comments</button>
+        <button class="dropdown-item" (click)="loadBug()">Bug Report</button>
+        <button class="dropdown-item" (click)= "loadQues()">Question</button>
+        <button class="dropdown-item" (click)= "loadAll()">All</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <br>
+
+   
+  <div class = "container" align="left">
+   
+    <router-outlet></router-outlet>
+  </div>

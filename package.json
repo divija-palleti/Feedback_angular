@@ -20,6 +20,12 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@ng-bootstrap/ng-bootstrap": "^2.0.0-alpha.0",
+    "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
+    "ag-grid": "^18.1.0",
+    "ag-grid-angular": "^18.1.0",
+    "angular-webpack-config": "^6.0.1",
+    "bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
