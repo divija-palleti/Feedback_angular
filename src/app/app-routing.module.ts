@@ -11,9 +11,23 @@ import {TypeCommentsComponent} from './type-comments';
 import {TypeBugreportComponent} from './type-bugreport';
 import {TypeQuestionsComponent} from './type-questions';
 import {ReEnterComponent} from './re-enter';
+import { FormComponent } from './form/form.component';
+import { FormDetailsComponent } from './form-details/form-details.component';
+import { HttpClient } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { ConfigService } from './config.service';
+
 const routes : Routes = [
 
-  {path:'', component : ThankyouComponent},
+ // {path:'', component : FormComponent},
+  {path: 'feedback-form', component: FormComponent,
+  children: [
+    { path: 'form-details', component: FormDetailsComponent }
+  ]
+  }, 
+  { path: 'login', component: LoginComponent },
+  
+  
   {
     path:'checkStatus',
     component : CheckStatusComponent,
@@ -37,7 +51,8 @@ const routes : Routes = [
     ]
 
   },
- 
+  { path: '', redirectTo: '/feedback-form', pathMatch: 'full'},
+  { path: '**', redirectTo: '' } 
 ];
 @NgModule({
 
@@ -47,4 +62,4 @@ const routes : Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents =[ThankyouComponent,CheckStatusComponent,ProviderAuthComponent,FeedbackListComponent]
+export const routingComponents =[ThankyouComponent,CheckStatusComponent,ProviderAuthComponent,FeedbackListComponent,LoginComponent,FormComponent,FormDetailsComponent]

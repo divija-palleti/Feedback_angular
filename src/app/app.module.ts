@@ -19,6 +19,12 @@ import { TypeCommentsComponent } from './type-comments/type-comments.component';
 import { TypeBugreportComponent } from './type-bugreport/type-bugreport.component';
 import { TypeQuestionsComponent } from './type-questions/type-questions.component';
 import { ReEnterComponent } from './re-enter/re-enter.component';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { FormComponent } from './form/form.component';
+import { FormDetailsComponent } from './form-details/form-details.component';
+import { HttpClient } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [

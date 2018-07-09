@@ -1,11 +1,9 @@
-
-
 import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModel } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { userInfo } from './information';
+import { User } from './form-details/user';
 import { map } from 'rxjs/operators';
 
 const httpOptions = {
@@ -22,6 +20,8 @@ const httpOptions = {
 })
 export class ConfigService {
 
+   public  x :string;
+
   GetHttpHeaders(): HttpHeaders {
     const headers = new HttpHeaders().set('content-type', 'application/json');
     return headers;
@@ -34,32 +34,28 @@ export class ConfigService {
   }
   constructor(private http: HttpClient) { }
 
-  //   getUserDetails(sub, descr, fname, lname, email) {
-  //     // post user details to HTTP
-  //     // console.log(email);
-  //     const user = {
-  //       sub,
-  //       descr,
-  //       fname,
-  //       lname,
-  //       email
-  //     };
-  //     console.log(user);
-  //     return this.http.post<User>(this.configUrl, user, { headers: this.GetHttpHeaders() }).subscribe(data => {
-  //       console.log(data, 'is what we get');
-  //     });
-  //   }
-  // }
-  getUserDetails(sub: any, descr: any, fname: any, lname: any, email: any,status:any,comments:any) {
-    return this.http.post<any>(this.configUrl, { firstname: fname, lastname: lname, subject: sub, descr: descr, email: email, feedbackstatus :status ,comments:comments})
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        if (user) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-        }
+    getUserDetails(sub, descr, firstname, lastname, email, feedbacktype) {
+      // post user details to HTTP
+      console.log(feedbacktype);
 
-        return user;
-      }));
+      return this.http.post<any>(this.configUrl, { sub, descr, firstname, lastname, email, feedbacktype},
+        { headers: this.GetHttpHeaders() }).subscribe(data => {
+         // this.x= data.ref_id;
+         this.x="3uyd8";
+
+      });
+    }
   }
-}
+//   getUserDetails(sub: any, descr: any, fname: any, lname: any, email: any) {
+//     return this.http.post<any>(this.configUrl, { firstname: fname, lastname: lname, subject: sub, descr: descr, email: email })
+//       .pipe(map(user => {
+//         // login successful if there's a jwt token in the response
+//         if (user) {
+//           // store user details and jwt token in local storage to keep user logged in between page refreshes
+//           localStorage.setItem('currentUser', JSON.stringify(user));
+//         }
+
+//         return user;
+//       }));
+//   }
+// }

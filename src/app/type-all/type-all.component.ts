@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {userInfo} from '../information';
 import {allInfo} from '../allinformation';
 import {ApiServicesService } from '../api-services.service';
-import { ConfigService } from '../config.service';
+
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Router , ActivatedRoute, ParamMap} from '@angular/router';
 @Component({
@@ -16,7 +16,7 @@ export class TypeAllComponent implements OnInit {
   closeResult: string;
   public type_id;
   public allInfo :allInfo[];
-  constructor(private modalService: NgbModal,private allinfo : ApiServicesService,private Config: ConfigService,private route :ActivatedRoute, private router : Router) { 
+  constructor(private modalService: NgbModal,private allinfo : ApiServicesService,private route :ActivatedRoute, private router : Router) { 
     route.params.subscribe(val => {
       console.log('sdjdjdj');
       let type_id = this.route.snapshot.paramMap.get('type_id');
@@ -85,6 +85,7 @@ export class TypeAllComponent implements OnInit {
 		{headerName: 'Feedback Status', field: 'feedbackstatus',cellTemplate: 'edit-button.html' },
 		
   ];
+  /*
   sendUser(event) {
     event.preventDefault();
     const target = event.target;
