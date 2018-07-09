@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {userInfo} from '../information';
+import {allInfo} from '../allinformation';
 import {ApiServicesService } from '../api-services.service';
 import { ConfigService } from '../config.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -14,9 +15,21 @@ export class TypeAllComponent implements OnInit {
 
   closeResult: string;
   public type_id;
-  public allInfo = [];
-  constructor(private modalService: NgbModal,private allinfo : ApiServicesService,private Config: ConfigService,private route :ActivatedRoute, private router : Router) { }
+  public allInfo :allInfo[];
+  constructor(private modalService: NgbModal,private allinfo : ApiServicesService,private Config: ConfigService,private route :ActivatedRoute, private router : Router) { 
+    route.params.subscribe(val => {
+      console.log('sdjdjdj');
+      let type_id = this.route.snapshot.paramMap.get('type_id');
+    this.type_id = type_id;
+   // console.log(this.type_id);
+        //this.content = content;
 
+    this.allinfo.getAllInfo(type_id).subscribe(data => 
+      {this.allInfo = data;
+       console.log(this.allInfo);
+      });
+     });
+  }
   ngOnInit() {
 
 
@@ -25,8 +38,7 @@ export class TypeAllComponent implements OnInit {
    // console.log(this.type_id);
         //this.content = content;
 
-
-    this.allinfo.getAllInfo().subscribe(data => 
+    this.allinfo.getAllInfo(type_id).subscribe(data => 
       {this.allInfo = data;
        console.log(this.allInfo);
       });

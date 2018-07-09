@@ -16,18 +16,29 @@ export class DisplayInfoComponent implements OnInit {
    public ref_id;
 
   constructor(private http :HttpClient,private userinfo : ApiServicesService,  private route :ActivatedRoute, private router : Router)
-   { }
+   { route.params.subscribe(val => {
+    console.log('sdjdjdj');
+    let ref_id = this.route.snapshot.paramMap.get("ref_id");
+       this.ref_id=ref_id;
+       console.log(ref_id);
+    this.userinfo.getInfo(ref_id).subscribe(data => 
+      {this.userInfo = data;
+       console.log(this.userInfo);
+      });
+   });
+
+   }
 
 
    
  
  
   ngOnInit() {
-    
+     console.log('sdjdjdj');
     let ref_id = this.route.snapshot.paramMap.get("ref_id");
        this.ref_id=ref_id;
        console.log(ref_id);
-    this.userinfo.getInfo().subscribe(data => 
+    this.userinfo.getInfo(ref_id).subscribe(data => 
       {this.userInfo = data;
        console.log(this.userInfo);
       });

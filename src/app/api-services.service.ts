@@ -10,10 +10,9 @@ import {refId} from './information';
 export class ApiServicesService {
 
 
-  private url : string ="/assets/data/info.json";
-  private url1 :string = "/assets/data/info.json";
-  private url2 : string = "";//to get the ref number
-
+  private url : string ="http://localhost:3000/restDemo1/quizzes1";
+  private url1 :string = "http://localhost:3000/restDemo/quizzes";
+  private url2 : string = "http://localhost:3000/restDemo/getontype";//to get the ref number
   constructor(private http :HttpClient) { }
 
 
@@ -21,14 +20,15 @@ export class ApiServicesService {
   {
     return this.http.get<refId[]>(this.url2);
   }
-  getInfo():Observable<userInfo[]>
+  getInfo(ref_id):Observable<userInfo[]>
   {
-    return this.http.get<userInfo[]>(this.url);
+    console.log(ref_id);
+    return this.http.get<userInfo[]>(this.url+'/'+ref_id+'?');
   }
 
-  getAllInfo() :Observable<allInfo[]>
+  getAllInfo(type_id) :Observable<allInfo[]>
   {
-    return this.http.get<allInfo[]>(this.url1);
+    return this.http.get<allInfo[]>(this.url2+'/'+type_id+'?');
   }
 
 }
