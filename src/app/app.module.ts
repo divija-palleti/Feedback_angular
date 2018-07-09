@@ -18,6 +18,7 @@ import { TypeAllComponent } from './type-all/type-all.component';
 import { TypeCommentsComponent } from './type-comments/type-comments.component';
 import { TypeBugreportComponent } from './type-bugreport/type-bugreport.component';
 import { TypeQuestionsComponent } from './type-questions/type-questions.component';
+import { ReEnterComponent } from './re-enter/re-enter.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TypeQuestionsComponent } from './type-questions/type-questions.componen
     TypeCommentsComponent,
     TypeBugreportComponent,
     TypeQuestionsComponent,
+    ReEnterComponent,
    
   ],
   imports: [

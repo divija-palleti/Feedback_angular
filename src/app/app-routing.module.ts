@@ -10,6 +10,7 @@ import {TypeAllComponent} from './type-all';
 import {TypeCommentsComponent} from './type-comments';
 import {TypeBugreportComponent} from './type-bugreport';
 import {TypeQuestionsComponent} from './type-questions';
+import {ReEnterComponent} from './re-enter';
 const routes : Routes = [
 
   {path:'', component : ThankyouComponent},
@@ -17,7 +18,8 @@ const routes : Routes = [
     path:'checkStatus',
     component : CheckStatusComponent,
     children :[
-      {path : 'displayInfo', component :DisplayInfoComponent},
+      {path : 'displayInfo/:ref_id', component :DisplayInfoComponent},
+      {path :'re-enter',component: ReEnterComponent}
     ]
   },
   {
@@ -28,7 +30,7 @@ const routes : Routes = [
     path : 'feedbackList' , component :FeedbackListComponent,
     children :[
      
-      {path :'all' ,  component : TypeAllComponent},
+      {path :'all/:type_id' ,  component : TypeAllComponent},
       {path :'comments', component : TypeCommentsComponent},
       {path : 'bugreport',component : TypeBugreportComponent},
       {path : 'questions' , component : TypeQuestionsComponent}

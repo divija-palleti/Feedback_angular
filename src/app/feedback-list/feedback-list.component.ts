@@ -7,34 +7,41 @@ import {Router , ActivatedRoute, ParamMap} from '@angular/router';
 })
 export class FeedbackListComponent implements OnInit {
 
+
+  public type_id=0;
   constructor( private route :ActivatedRoute, private router : Router) { }
 
   ngOnInit() {
     
-    this.loadAll();
+    this.router.navigate(['all',this.type_id], {relativeTo : this.route});
     
   }
 
   loadComments()
   {
-    this.router.navigate(['comments'], {relativeTo : this.route});
+    this.type_id=1;
+    this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
 
   loadBug()
   {
-    this.router.navigate(['bugreport'], {relativeTo : this.route});
+    this.type_id=2;
+    this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
 
   loadQues()
 
   {
-    this.router.navigate(['questions'], {relativeTo : this.route});
+    this.type_id=3;
+    this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
   
 
   loadAll()
   {
-    this.router.navigate(['all'], {relativeTo : this.route});
+    console.log(this.type_id);
+    this.type_id=0;
+    this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
  /*
  typeX()

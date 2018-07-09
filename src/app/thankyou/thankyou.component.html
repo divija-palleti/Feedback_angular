@@ -6,7 +6,9 @@
     </button>
   </div>
   <div class="modal-body text-secondary">
-    <p>Thank You for your valuable time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : 486797989</span> </p>
+      <p>Thank You for your valuale time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : 65656956</span> </p>
+   <!-- <p  *ngFor = "let id of refId">Thank You for your valuable time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : {{id.ref_id}}</span> </p>
+   -->
   </div>
   
   <div class="modal-footer">
@@ -16,4 +18,4 @@
   </div>
 </ng-template>
 
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openWindow(content)">Submit</button>
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openWindow(content);functionRefId();">Submit</button>

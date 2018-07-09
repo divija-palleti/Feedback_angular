@@ -9,28 +9,48 @@ class="ag-theme-balham"
 
 <ng-template #content let-c="close" let-d="dismiss" id = "modal-total">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Reference Number : 8786264</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form>
+      <form (submit)="sendUser($event)" >
         <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
-          <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
-                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
-              </button>
-            </div>
-          </div>
+          <label for="exampleName">Subject</label>
+          <input type="text" class="form-control" id="subject" placeholder="Name">
         </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Description</label>
+          <textarea class="form-control" id="descr" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleName">First Name</label>
+          <input type="text" class="form-control" id="firstname" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="exampleName">Last Name</label>
+          <input type="text" class="form-control" id="lastname" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleName">Feedback Status</label>
+          <input type="text" class="form-control" id="feedbackstatus" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Comments</label>
+          <textarea class="form-control" id="comments" rows="3"></textarea>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Save</button>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
     </div>
   </ng-template>
 

@@ -1,16 +1,15 @@
 [
     
-
     {
         "id" : "2",
         "firstname":"divija",
         "lastname" : "string",
         "feedbacktype" :"string",
-        "subject" : "string",
-        "descr" :"string",
+        "subject" : "This technique uses an Event Emitter to emit an event from a child component to it’s parent using @Output(). The parent component listens to the emitter using event binding, once fired it will bind the input from the emitter to the target child component using input binding.",
+        "descr" :"stringThis technique uses an Event Emitter to emit an event from a child component to it’s parent using @Output(). The parent component listens to the emitter using event binding, once fired it will bind the input from the emitter to the target child component using input binding.",
         "dt" :"string",
         "feedbackstatus":"string",
-        "comments":"string",
+        "comments":"This technique uses an Event Emitter to emit an event from a child component to it’s parent using @Output(). The parent component listens to the emitter using event binding, once fired it will bind the input from the emitter to the target child component using input binding.",
         "email":"string",
         "ref_id" :"string"
 

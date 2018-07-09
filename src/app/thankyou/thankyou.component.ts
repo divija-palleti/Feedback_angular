@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-
+import {ApiServicesService } from '../api-services.service';
+import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-thankyou',
   templateUrl: './thankyou.component.html',
@@ -20,15 +21,30 @@ import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bo
 })
 export class ThankyouComponent implements OnInit {
 
+
+
+  refId = [];
+  constructor(private modalService: NgbModal, private http :HttpClient,private refid : ApiServicesService) {}
+  closeResult: string;
+
   
   ngOnInit() {
+
+   
   }
 
 
 
-  closeResult: string;
+  functionRefId()
+  {
+        
+  this.refid.getRef().subscribe(data => 
+    {this.refId = data;
+     console.log(this.refId);
+    });
+  }
 
-  constructor(private modalService: NgbModal) {}
+
 
   openWindow(content) {
    
