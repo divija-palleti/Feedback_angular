@@ -64,6 +64,11 @@ export class EditProviderComponent implements OnInit {
   }
 
   get f() { return this.registerForm.controls; }
+ 
+  rerouteback()
+  {
+    this.router.navigate(['feedbackList']); 
+  }
 
 
   onSubmit() {
@@ -87,7 +92,7 @@ export class EditProviderComponent implements OnInit {
       return;
     }
 
-    alert('SUCCESS!! :-)');
+    alert('Changes have been saved');
     event.preventDefault();
     const target = event.target;
     const subject = target.querySelector('#subject').value;
@@ -97,8 +102,10 @@ export class EditProviderComponent implements OnInit {
   
     const email = target.querySelector('#email').value;
     console.log(type);
-    this.Config.putUserDetails(feedbackstatus, comments);
 
+    this.Config.putUserDetails(feedbackstatus, comments,this.ref_id);
+    
+    this.rerouteback();
   }
 
 }

@@ -9,25 +9,47 @@ export class FeedbackListComponent implements OnInit {
 
 
   public type_id=0;
+  public type ;
   constructor( private route :ActivatedRoute, private router : Router) { 
-    
+
   }
 
   ngOnInit() {
-    
+   // this.router.navigate(['login']);
+   this.type = "All";
     this.router.navigate(['all',this.type_id], {relativeTo : this.route});
-    
+    //this.types();
   }
+ 
+  types()
+  {
+    if(this.type_id == 1)
+    {
+             this.type = "Comments";
+    }
 
+    if(this.type_id == 2)
+    {
+             this.type = "Bug Report";
+    }
+
+    if(this.type_id == 1)
+    {
+             this.type = "Questions";
+    }
+
+  }
   loadComments()
   {
     this.type_id=1;
+    this.type = "Comments";
     this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
 
   loadBug()
   {
     this.type_id=2;
+    this.type = "Bug Report";
     this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
 
@@ -35,6 +57,7 @@ export class FeedbackListComponent implements OnInit {
 
   {
     this.type_id=3;
+    this.type = "Questions";
     this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
   
@@ -43,6 +66,7 @@ export class FeedbackListComponent implements OnInit {
   {
     console.log(this.type_id);
     this.type_id=0;
+    this.type = "All";
     this.router.navigate(['all',this.type_id], {relativeTo : this.route});
   }
  /*

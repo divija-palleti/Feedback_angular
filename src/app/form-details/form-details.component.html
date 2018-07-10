@@ -1,90 +1,100 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <form [formGroup]="registerForm" (ngSubmit)="sendUser($event , content)">
-          <div class="form-group">
-            <label>Type of Feedback</label>
-            <div class="form-control">
-              <label class="radio-inline" id="type">
-                <input type="radio" name="type" value="comments" (click)="handleChange('comments')"> Comments
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="type" value="bugrep" (click)="handleChange('bugrep')"> Bug Report
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="type" value="questions" (click)="handleChange('questions')"> Questions
-              </label>
-            </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="registerForm" (ngSubmit)="sendUser($event,content)">
+        <div class="form-group">
+          <label>Type of Feedback</label>
+          <div class="form-control">
+            <label class="radio-inline rd-space" id="type">
+              <input type="radio" name="type" value="comments" (click)="handleChange('comments')"> Comments
+            </label>
+            <label class="radio-inline rd-space">
+              <input type="radio" name="type" value="bugrep" (click)="handleChange('bugrep')"> Bug Report
+            </label>
+            <label class="radio-inline rd-space">
+              <input type="radio" name="type" value="questions" (click)="handleChange('questions')"> Questions
+            </label>
           </div>
-          <div class="form-group">
-            <label>Subject</label>
-            <input type="text" formControlName="subject" class="form-control" id="subject" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }"
-            />
-            <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
-              <div *ngIf="f.subject.errors.required">Subject is required</div>
-            </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" formControlName="subject" class="form-control" id="subject" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }"
+          />
+          <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+            <div *ngIf="f.subject.errors.required">Subject is required</div>
+            <div *ngIf="f.subject.errors.maxlength">Subject can't be longer than 50 characters</div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label>Description</label>
-            <textarea formControlName="descr" class="form-control" id="descr" [ngClass]="{ 'is-invalid': submitted && f.descr.errors }"></textarea>
-            <div *ngIf="submitted && f.descr.errors" class="invalid-feedback">
-              <div *ngIf="f.descr.errors.required">Description is required</div>
-            </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea formControlName="descr" class="form-control" id="descr" [ngClass]="{ 'is-invalid': submitted && f.descr.errors }"></textarea>
+          <div *ngIf="submitted && f.descr.errors" class="invalid-feedback">
+            <div *ngIf="f.descr.errors.required">Description is required</div>
+            <div *ngIf="f.descr.errors.maxlength">Description can't be longer than 100 characters</div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" formControlName="firstname" class="form-control" id="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
-            />
-            <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
-              <div *ngIf="f.firstname.errors.required">First Name is required</div>
-            </div>
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" formControlName="firstname" class="form-control" id="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+          />
+          <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+            <div *ngIf="f.firstname.errors.required">First Name is required</div>
+            <div *ngIf="f.firstname.errors.maxlength">First Name can't be longer than 50 characters</div>
           </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" formControlName="lastname" class="form-control" id="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
-            />
-            <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-              <div *ngIf="f.lastname.errors.required">Last Name is required</div>
-            </div>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" formControlName="lastname" class="form-control" id="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+          />
+          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+            <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+            <div *ngIf="f.lastname.errors.maxlength">Last Name can't be longer than 50 characters</div>
           </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="text" formControlName="email" class="form-control" id="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-            />
-            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-              <div *ngIf="f.email.errors.required">Email is required</div>
-              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" formControlName="email" class="form-control" id="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
-          <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary" >Submit</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary btn-space" >Submit</button>
+          <button [disabled]="loading" class="btn btn-primary btn-space" (click)="resetForm()">Reset</button>
+        </div>
+      </form>
     </div>
   </div>
-  <ng-template #content let-c="close" let-d="dismiss">
-      <div class="modal-header text-primary">
-        <h4 class="modal-title text-align: center" >Thank You</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-secondary">
-          <p>Thank You for your valuale time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : {{ref_id}}</span> </p>
-       <!-- <p  *ngFor = "let id of refId">Thank You for your valuable time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : {{id.ref_id}}</span> </p>
-       -->
-      </div>
-      
-      <div class="modal-footer">
-         
-          <button type="button" class="btn btn-primary" routerLink ="checkStatus" routerLinkActive="active1" (click)="c('Close click') ;opencheck();">Check Status</button>
-        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-      </div>
-    </ng-template>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header text-primary">
+      <h4 class="modal-title text-align: center" >Thank You</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-secondary">
+        <p>Thank You for your valuale time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : {{ref_id}}</span> </p>
+     <!-- <p  *ngFor = "let id of refId">Thank You for your valuable time. We are on our way to improve our project  &hellip;<br> <span class="text-monospace font-weight-bold">Reference Number is : {{id.ref_id}}</span> </p>
+     -->
+    </div>
     
+    <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary" routerLink ="checkStatus" routerLinkActive="active1" (click)="c('Close click') ;opencheck();">Check Status</button>
+      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template>
+  
+  
+
+
+
+
     
     

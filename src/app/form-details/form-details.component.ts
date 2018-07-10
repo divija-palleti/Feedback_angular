@@ -41,13 +41,13 @@ export class FormDetailsComponent implements OnInit {
        console.log(this.Config.x);
        console.log(this.ref_id);
    ///    this.ref_id="rrr";*/
-    this.registerForm = this.formBuilder.group({
-      subject: ['', Validators.required],
-      descr: ['', Validators.required],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    });
+   this.registerForm = this.formBuilder.group({
+    subject: ['', [Validators.required, Validators.maxLength(50)]],
+    descr: ['', [Validators.required, Validators.maxLength(100)]],
+    firstname: ['', [Validators.required, Validators.maxLength(50)]],
+    lastname: ['', [Validators.required, Validators.maxLength(50)]],
+    email: ['', [Validators.required, Validators.email]],
+  });
   }
 
   get f() { return this.registerForm.controls; }
@@ -83,6 +83,9 @@ export class FormDetailsComponent implements OnInit {
     }
   }
 
+  resetForm() {
+    this.registerForm.reset();
+  }
   onSubmit() {
     this.submitted = true;
 
@@ -114,8 +117,8 @@ export class FormDetailsComponent implements OnInit {
     const lastname = target.querySelector('#lastname').value;
     const email = target.querySelector('#email').value;
     console.log(type);
-   var z= this.Config.getUserDetails(subject , descr, firstname, lastname, email, type);
-   console.log(this.Config.getUserDetails(subject , descr, firstname, lastname, email, type));
+  this.Config.getUserDetails(subject , descr, firstname, lastname, email, type);
+   //console.log(this.Config.getUserDetails(subject , descr, firstname, lastname, email, type));
     this.ref_id = this.Config.x;
     console.log(this.Config.x);
     console.log(this.ref_id);

@@ -92,6 +92,7 @@ export class TypeAllComponent implements OnInit {
     // return '<a  href ="feedbackList" (click)= "finctions()" >'+ params.value+'</a>'
      }
   ,
+//  {headerName: 'User Name', field: 'firstname' },
 		{headerName: 'First Name', field: 'firstname' },
     {headerName: 'Last Name', field: 'lastname'},
     {headerName:'Feedback Type', field: 'feedbacktype' },

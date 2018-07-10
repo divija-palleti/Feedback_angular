@@ -4,14 +4,14 @@ import {FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-
+import { AuthService } from '../auth.service';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { }
+  constructor(private Auth: AuthService,private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -37,11 +37,15 @@ export class LoginComponent implements OnInit {
     const password = target.querySelector('#password').value;
     if (email === 'niharika@gmail.com' && password === 'niharika') {
       //alert('SUCCESS!! :-)');
+      this.Auth.setLoggedIn(true);
       this.router.navigate(['feedbackList']);
     }
     else {
+      this.Auth.setLoggedIn(false);
+      this.router.navigate(['login']);
       alert('Please enter valid credentials');
     }
+    
   }
 
 }

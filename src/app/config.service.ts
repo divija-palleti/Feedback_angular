@@ -28,6 +28,7 @@ export class ConfigService {
   }
   // tslint:disable-next-line:member-ordering
   configUrl = 'http://192.168.122.1:3000/person/save';
+  configUrl1 = 'http://192.168.122.1:3000/person/save';
 
   getrefid()
   {
@@ -39,11 +40,11 @@ export class ConfigService {
   }
   constructor(private http: HttpClient) { }
 
-    getUserDetails(sub, descr, firstname, lastname, email, feedbacktype) {
+    getUserDetails(subject, descr, firstname, lastname, email, feedbacktype) {
       // post user details to HTTP
       console.log(feedbacktype);
 
-       this.http.post<any>(this.configUrl, { sub, descr, firstname, lastname, email, feedbacktype},
+       this.http.post<any>(this.configUrl, { subject, descr, firstname, lastname, email, feedbacktype},
         { headers: this.GetHttpHeaders() }).subscribe(data => {
          // this.x= data.ref_id;
          this.x="3uyd8";
@@ -53,11 +54,11 @@ export class ConfigService {
       console.log( this.x);
       return this.x;
     }
-    putUserDetails( feedbackstatus, comments) {
+    putUserDetails( feedbackstatus, comments,ref_id) {
       // post user details to HTTP
       //console.log(feedbacktype);
 
-       this.http.post<any>(this.configUrl, { feedbackstatus, comments},
+       this.http.put<any>(this.configUrl1+'/'+ref_id+'?', { feedbackstatus, comments},
         { headers: this.GetHttpHeaders() }).subscribe(data => {
          // this.x= data.ref_id;
         

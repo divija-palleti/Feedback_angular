@@ -18,10 +18,11 @@ import { LoginComponent } from './login/login.component';
 import { ConfigService } from './config.service';
 import {EditResComponent} from './edit-res';
 import {EditProviderComponent} from './edit-provider';
+import { AuthGuard } from './auth.guard';
 const routes : Routes = [
 
  // {path:'', component : FormComponent},
- {path :'edit_provider/:ref_id',component:EditProviderComponent},
+ {path :'edit_provider/:ref_id',component:EditProviderComponent,canActivate: [AuthGuard],},
   {path: 'feedback-form', component: FormComponent,
   children: [
     { path: 'form-details', component: FormDetailsComponent }
@@ -43,7 +44,7 @@ const routes : Routes = [
 
   },
   {
-    path : 'feedbackList' , component :FeedbackListComponent,
+    path : 'feedbackList' , component :FeedbackListComponent, canActivate: [AuthGuard],
     children :[
       {path : 'edit_res/:ref_id' , component : EditResComponent},
       {path :'all/:type_id' ,  component : TypeAllComponent},
@@ -60,7 +61,7 @@ const routes : Routes = [
 
   imports:[RouterModule.forRoot(routes)],
   exports: [ RouterModule ],
-
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
 
