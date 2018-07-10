@@ -29,6 +29,11 @@ export class ConfigService {
   // tslint:disable-next-line:member-ordering
   configUrl = 'http://192.168.122.1:3000/person/save';
 
+  getrefid()
+  {
+    return this.x;
+  }
+
   getConfig() {
     return this.http.get(this.configUrl);
   }
@@ -38,12 +43,27 @@ export class ConfigService {
       // post user details to HTTP
       console.log(feedbacktype);
 
-      return this.http.post<any>(this.configUrl, { sub, descr, firstname, lastname, email, feedbacktype},
+       this.http.post<any>(this.configUrl, { sub, descr, firstname, lastname, email, feedbacktype},
         { headers: this.GetHttpHeaders() }).subscribe(data => {
          // this.x= data.ref_id;
          this.x="3uyd8";
+         console.log( this.x);
 
       });
+      console.log( this.x);
+      return this.x;
+    }
+    putUserDetails( feedbackstatus, comments) {
+      // post user details to HTTP
+      //console.log(feedbacktype);
+
+       this.http.post<any>(this.configUrl, { feedbackstatus, comments},
+        { headers: this.GetHttpHeaders() }).subscribe(data => {
+         // this.x= data.ref_id;
+        
+
+      });
+     
     }
   }
 //   getUserDetails(sub: any, descr: any, fname: any, lname: any, email: any) {

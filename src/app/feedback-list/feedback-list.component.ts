@@ -9,7 +9,9 @@ export class FeedbackListComponent implements OnInit {
 
 
   public type_id=0;
-  constructor( private route :ActivatedRoute, private router : Router) { }
+  constructor( private route :ActivatedRoute, private router : Router) { 
+    
+  }
 
   ngOnInit() {
     

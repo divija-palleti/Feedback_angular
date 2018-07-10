@@ -5,6 +5,7 @@ import {ApiServicesService } from '../api-services.service';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Router , ActivatedRoute, ParamMap} from '@angular/router';
+import { EditResComponent } from '../edit-res';
 @Component({
   selector: 'app-type-all',
   templateUrl: './type-all.component.html',
@@ -14,8 +15,11 @@ export class TypeAllComponent implements OnInit {
 
 
   closeResult: string;
+  public path;
   public type_id;
   public allInfo :allInfo[];
+
+  public href : string;
   constructor(private modalService: NgbModal,private allinfo : ApiServicesService,private route :ActivatedRoute, private router : Router) { 
     route.params.subscribe(val => {
       console.log('sdjdjdj');
@@ -32,7 +36,7 @@ export class TypeAllComponent implements OnInit {
   }
   ngOnInit() {
 
-
+   //this.finctions();
     let type_id = this.route.snapshot.paramMap.get('type_id');
     this.type_id = type_id;
    // console.log(this.type_id);
@@ -46,7 +50,7 @@ export class TypeAllComponent implements OnInit {
   }
 
   users: userInfo[];
-
+  
   fulldetails()
   {
 
@@ -62,6 +66,11 @@ export class TypeAllComponent implements OnInit {
     console.log(this.type_id);
   }
 
+  finctions()
+  {
+    console.log("Tt");
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -73,9 +82,16 @@ export class TypeAllComponent implements OnInit {
   }
   
     columnDefs = [
-		{headerName:'Reference Number', field: 'ref_id',cellRenderer: function(params) {
-      return '<a  href ="javascript:void(0);" onclick="open(content);"  >'+ params.value+'</a>'
-  }},
+    {headerName:'Reference Number', field: 'ref_id',cellRendererFramework: EditResComponent
+    
+     // this.path = 'feedbackList/edit_res/'+params.value;
+     // console.log( 'feedbackList/edit_res/'+params.value);
+     // this.href = 'feedbackList/edit_res/'+params.value;
+    // return '<div class="gridStyle" ng-hide="list.length== 0" ng-grid="gridListOfStuff" (click)="finctions()">'+params.value+'</div>'
+    // return '<span (click)="finctions()">'+params.value+'</span>'
+    // return '<a  href ="feedbackList" (click)= "finctions()" >'+ params.value+'</a>'
+     }
+  ,
 		{headerName: 'First Name', field: 'firstname' },
     {headerName: 'Last Name', field: 'lastname'},
     {headerName:'Feedback Type', field: 'feedbacktype' },

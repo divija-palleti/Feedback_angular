@@ -16,10 +16,12 @@ import { FormDetailsComponent } from './form-details/form-details.component';
 import { HttpClient } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ConfigService } from './config.service';
-
+import {EditResComponent} from './edit-res';
+import {EditProviderComponent} from './edit-provider';
 const routes : Routes = [
 
  // {path:'', component : FormComponent},
+ {path :'edit_provider/:ref_id',component:EditProviderComponent},
   {path: 'feedback-form', component: FormComponent,
   children: [
     { path: 'form-details', component: FormDetailsComponent }
@@ -43,7 +45,7 @@ const routes : Routes = [
   {
     path : 'feedbackList' , component :FeedbackListComponent,
     children :[
-     
+      {path : 'edit_res/:ref_id' , component : EditResComponent},
       {path :'all/:type_id' ,  component : TypeAllComponent},
       {path :'comments', component : TypeCommentsComponent},
       {path : 'bugreport',component : TypeBugreportComponent},
@@ -62,4 +64,4 @@ const routes : Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents =[ThankyouComponent,CheckStatusComponent,ProviderAuthComponent,FeedbackListComponent,LoginComponent,FormComponent,FormDetailsComponent]
+export const routingComponents =[ThankyouComponent,CheckStatusComponent,ProviderAuthComponent,FeedbackListComponent,LoginComponent,FormComponent,FormDetailsComponent,EditResComponent,EditProviderComponent]

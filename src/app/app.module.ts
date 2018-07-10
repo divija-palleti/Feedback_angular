@@ -25,6 +25,8 @@ import { FormDetailsComponent } from './form-details/form-details.component';
 import { HttpClient } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ConfigService } from './config.service';
+import { EditResComponent } from './edit-res/edit-res.component';
+import { EditProviderComponent } from './edit-provider/edit-provider.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ConfigService } from './config.service';
     TypeBugreportComponent,
     TypeQuestionsComponent,
     ReEnterComponent,
+    EditResComponent,
+    EditProviderComponent,
    
   ],
   imports: [
@@ -47,7 +51,7 @@ import { ConfigService } from './config.service';
     AgGridModule.withComponents([routingComponents]),
     HttpClientModule
   ],
-  providers: [ApiServicesService],
+  providers: [ApiServicesService],entryComponents:[EditResComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

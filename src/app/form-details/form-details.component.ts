@@ -8,7 +8,7 @@ import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bo
 import {ApiServicesService } from '../api-services.service';
 import {HttpClient} from '@angular/common/http';
 import { RouteConfigLoadEnd } from '@angular/router';
-
+import {Router , ActivatedRoute, ParamMap} from '@angular/router';
 let type = 10;
 
 @Component({
@@ -24,15 +24,23 @@ export class FormDetailsComponent implements OnInit {
   submitted = false;
    public ref_id:string;
 
-  constructor(private Config: ConfigService, private formBuilder: FormBuilder,private modalService: NgbModal, private http :HttpClient,private refid : ApiServicesService) {}
+  constructor(private Config: ConfigService, private formBuilder: FormBuilder,private modalService: NgbModal, private http :HttpClient,private refid : ApiServicesService, private route :ActivatedRoute, private router : Router) {
+  /*  route.params.subscribe(val => {
+      console.log('sdjdjdj');
+      this.ref_id = this.Config.x;
+       console.log(this.Config.x);
+       console.log(this.ref_id);
+      
+     });*/
+  }
   closeResult: string;
 
 
   ngOnInit() {
-       this.ref_id = this.Config.x;
+     /*  this.ref_id = this.Config.x;
        console.log(this.Config.x);
        console.log(this.ref_id);
-   ///    this.ref_id="rrr";
+   ///    this.ref_id="rrr";*/
     this.registerForm = this.formBuilder.group({
       subject: ['', Validators.required],
       descr: ['', Validators.required],
@@ -45,20 +53,22 @@ export class FormDetailsComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
 
-  functionRefId()
+  opencheck()
   {
-        /*
-  this.refid.getRef().subscribe(data => 
-    {this.refId = data;
-     console.log(this.refId);
-    });*/
+    //this.c('Close click');
+    this.router.navigate(['checkStatus']); 
+    
   }
 
 
 
   openWindow(content) {
    
+    this.ref_id = this.Config.x;
+    console.log(this.Config.x);
+    console.log(this.ref_id);
     this.modalService.open(content, { windowClass: 'dark-modal' , centered: true});
+    
   
   }
 
@@ -86,7 +96,7 @@ export class FormDetailsComponent implements OnInit {
     type = val;
     console.log(val);
   }
-  sendUser(event) {
+  sendUser(event ,content) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -95,6 +105,7 @@ export class FormDetailsComponent implements OnInit {
     }
 
     alert('SUCCESS!! :-)');
+   // this.openWindow(content);
     event.preventDefault();
     const target = event.target;
     const subject = target.querySelector('#subject').value;
@@ -103,7 +114,12 @@ export class FormDetailsComponent implements OnInit {
     const lastname = target.querySelector('#lastname').value;
     const email = target.querySelector('#email').value;
     console.log(type);
-    this.Config.getUserDetails(subject , descr, firstname, lastname, email, type);
+   var z= this.Config.getUserDetails(subject , descr, firstname, lastname, email, type);
+   console.log(this.Config.getUserDetails(subject , descr, firstname, lastname, email, type));
+    this.ref_id = this.Config.x;
+    console.log(this.Config.x);
+    console.log(this.ref_id);
+    this.openWindow(content);
 
   }
 }
